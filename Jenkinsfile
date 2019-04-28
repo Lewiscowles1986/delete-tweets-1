@@ -6,6 +6,9 @@ def get_stages(docker_image) {
             stage("${docker_image}") {
                 echo "Running in ${docker_image}"
             }
+            stage("whoami ${docker_image}") {
+                sh "whoami"
+            }
             stage('build') {
                 sh "pip install -r requirements.txt --user"
             }
