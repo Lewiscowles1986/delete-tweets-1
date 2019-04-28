@@ -5,7 +5,6 @@ def get_stages(docker_image) {
         docker.image(docker_image).inside {
             stage("${docker_image}") {
                 echo "Running in ${docker_image}"
-                echo "${UID} ${USER} ${PWD}"
             }
             stage('build') {
                 sh "pip install -r requirements.txt --user"
