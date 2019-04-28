@@ -1,12 +1,6 @@
 def docker_images = ["cd2team/docker-python:2.7", "cd2team/docker-python:3.5", "cd2team/docker-python:3.6", "cd2team/docker-python:3.7"]
 
 def get_stages(docker_image) {
-    agent {
-        docker {
-            image 'ubuntu'
-            args '-u root:sudo -v $HOME/workspace/myproject:/myproject'
-        }
-    }
     stages = {
         docker.image(docker_image).inside("-u 0") {
             stage("${docker_image}") {
